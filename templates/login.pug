@@ -1,0 +1,18 @@
+doctype
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title SSO Login
+  body
+    //- = console.log(req)
+    p Enter login credentials:
+    form(action=`/sso` method='post')
+      div
+        label(for='username') Username: #[br]
+        input#username(type='text' name='username' value='' required)
+      div
+        label(for='password') Password: #[br]
+        input#password(type='password' name='password' value='' required)
+      input(type='text' name='SAMLRequest' value=`${req.query.SAMLRequest || ''}` hidden)
+      input(type='text' name='RelayState' value=`${req.query.RelayState || ''}` hidden)
+      button(type='submit') Login
